@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.util.HtmlUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,13 @@ public class QuizService {
 
     public List<QuizDto> getQuizByDifficulty(String difficulty) {
         List<Question> questions = quizRepository.findByDifficulty(difficulty);
+
+        for (Question q: questions) {
+            String originalQuestion = q.getQuestion();
+            String unescapedQuestion = HtmlUtils.htmlUnescape(originalQuestion);
+            q.setQuestion(unescapedQuestion);
+        }
+
         List<QuizDto> quizDtos = questions.stream().map(question -> new QuizDto(question))
                 .collect(Collectors.toList());
         return quizDtos;

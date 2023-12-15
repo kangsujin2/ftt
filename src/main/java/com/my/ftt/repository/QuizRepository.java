@@ -1,11 +1,13 @@
 package com.my.ftt.repository;
 
 import com.my.ftt.domain.Question;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Repository
 public class QuizRepository {
 
     @PersistenceContext

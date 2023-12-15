@@ -1,7 +1,6 @@
 package com.my.ftt.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.my.ftt.demo.domain.Question;
 import lombok.Getter;
 import lombok.Setter;
 
