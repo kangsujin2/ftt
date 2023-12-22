@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.HtmlUtils;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,6 +65,9 @@ public class QuizService {
             String originalQuestion = q.getQuestion();
             String unescapedQuestion = HtmlUtils.htmlUnescape(originalQuestion);
             q.setQuestion(unescapedQuestion);
+
+            Collections.shuffle(q.getAnswers());
+
         }
 
         List<QuizDto> quizDtos = questions.stream().map(question -> new QuizDto(question))

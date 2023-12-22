@@ -19,7 +19,7 @@ public class QuizRepository {
 
     public List<Question> findByDifficulty(String difficulty) {
         String query = "select distinct q from Question q join fetch q.answers where q.difficulty = :difficulty";
-        List<Question> questions = em.createQuery(query, Question.class).setParameter("difficulty", difficulty).getResultList();
+        List<Question> questions = em.createQuery(query, Question.class).setParameter("difficulty", difficulty).setMaxResults(3).getResultList();
         return questions;
     }
 }

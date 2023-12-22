@@ -14,7 +14,7 @@ public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "answer_id")
-    private int id;
+    private int answerId;
 
     private String answer;
 
